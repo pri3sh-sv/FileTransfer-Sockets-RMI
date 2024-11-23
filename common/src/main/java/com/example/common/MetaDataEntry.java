@@ -54,6 +54,11 @@ public class MetaDataEntry implements Serializable {
         this.version = version;
     }
 
+    public void incrementVersion() {
+        this.version++;
+        this.lastModified = new Date();
+    }
+
     @Override
     public String toString() {
         return "MetadataEntry{" +

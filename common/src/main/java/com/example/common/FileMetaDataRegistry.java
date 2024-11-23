@@ -11,4 +11,5 @@ public interface FileMetaDataRegistry extends Remote {
     void updateMetadata(String filename) throws RemoteException;
     boolean isFileLocked(String filename) throws RemoteException;
     MetaDataEntry getMetadata(String filename) throws RemoteException;
+    void addFileMetaData(String fileName, MetaDataEntry metaDataEntry) throws RemoteException;
 }
