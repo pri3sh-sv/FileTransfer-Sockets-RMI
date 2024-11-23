@@ -19,25 +19,29 @@ public class FileMetaDataManagerImpl extends UnicastRemoteObject implements File
     }
 
     @Override
-    public void lockFile(String fileName) throws RemoteException {
+    public String lockFile(String fileName) throws RemoteException {
         boolean isPresent = fileMetaData.containsKey(fileName);
-        if (isPresent) {
+        if (!isPresent) {
             System.out.println("Meta Data for file name not present");
+            return "Meta Data for file name not present";
         }
         MetaDataEntry metaDataEntry = fileMetaData.get(fileName);
         metaDataEntry.setLocked(true);
         System.out.println("File locked: " + fileName);
+        return ("File locked: " + fileName);
     }
 
     @Override
-    public void unlockFile(String fileName) throws RemoteException {
+    public String unlockFile(String fileName) throws RemoteException {
         boolean isPresent = fileMetaData.containsKey(fileName);
-        if (isPresent) {
+        if (!isPresent) {
             System.out.println("Meta Data for file name not present");
+            return "Meta Data for file name not present";
         }
         MetaDataEntry metaDataEntry = fileMetaData.get(fileName);
         metaDataEntry.setLocked(false);
         System.out.println("File unlocked: " + fileName);
+        return ("File unlocked: " + fileName);
     }
 
     @Override

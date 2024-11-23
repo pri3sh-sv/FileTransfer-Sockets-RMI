@@ -5,8 +5,8 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface FileMetaDataRegistry extends Remote {
-    void lockFile(String filename) throws RemoteException;
-    void unlockFile(String filename) throws RemoteException;
+    String lockFile(String filename) throws RemoteException;
+    String unlockFile(String filename) throws RemoteException;
     List<String> getVersionHistory() throws RemoteException;
     void updateMetadata(String filename) throws RemoteException;
     boolean isFileLocked(String filename) throws RemoteException;
