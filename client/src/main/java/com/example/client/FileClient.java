@@ -42,13 +42,13 @@ public class FileClient {
                     case 1:
                         System.out.print("Enter file name to lock: ");
                         String lockFileName = scanner.nextLine();
-                        System.out.println(metadataManager.lockFile(lockFileName));
+                        metadataManager.lockFile(lockFileName);
                         break;
 
                     case 2:
                         System.out.print("Enter file name to unlock: ");
                         String unlockFileName = scanner.nextLine();
-                        System.out.println(metadataManager.unlockFile(unlockFileName));
+                        metadataManager.unlockFile(unlockFileName);
                         break;
 
                     case 3:

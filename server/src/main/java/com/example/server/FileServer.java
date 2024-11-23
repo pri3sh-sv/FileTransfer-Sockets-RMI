@@ -14,7 +14,6 @@ public class FileServer {
 
     public static void main(String[] args) {
 
-        // Create the shared file directory if it does not exist
         File storageDir = new File(FILE_STORAGE_DIR);
         if (!storageDir.exists()) {
             boolean created = storageDir.mkdir();
@@ -27,11 +26,10 @@ public class FileServer {
             System.out.println("Directory already exists: " + FILE_STORAGE_DIR);
         }
 
-        try {
-            // Create and bind the FileMetaDataRegistry to the RMI registry
+        try{
             FileMetaDataRegistry fileMetaDataRegistry = new FileMetaDataManagerImpl();
             LocateRegistry.createRegistry(1099);
-            Naming.rebind("rmi://localhost/FileMetadataManager", fileMetaDataRegistry);
+            Naming.rebind("FileMetadataManager", fileMetaDataRegistry);
             System.out.println("RMI Server is running...");
 
             FileTransferHandler.startFileServer();

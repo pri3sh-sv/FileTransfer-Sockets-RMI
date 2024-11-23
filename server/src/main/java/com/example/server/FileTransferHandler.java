@@ -26,7 +26,7 @@ public class FileTransferHandler {
     }
 
     private static void handleClientFile(Socket socket) {
-        try (ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream())) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream())){
             FileTransferProtocol fileTransfer = (FileTransferProtocol) inputStream.readObject();
             saveFile(fileTransfer);
         } catch (IOException | ClassNotFoundException e) {
@@ -38,7 +38,8 @@ public class FileTransferHandler {
         try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_STORAGE_DIR + fileTransfer.getFileName())) {
             fileOutputStream.write(fileTransfer.getFileData());
             System.out.println("File Saved to " + fileTransfer.getFileName());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
